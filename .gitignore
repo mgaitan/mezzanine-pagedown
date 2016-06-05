@@ -1,0 +1,6 @@
+*.pyc
+__pycache__
+_build/
+dev.db
+local_settings.py
+media/
