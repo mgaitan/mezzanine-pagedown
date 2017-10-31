@@ -1,15 +1,18 @@
 from mezzanine.conf import settings
-
+from mezzanine.utils.html import escape
 from markdown import markdown
 from bleach import clean
 
 
 def _clean(html):
-    tags = settings.RICHTEXT_ALLOWED_TAGS
-    attrs = settings.RICHTEXT_ALLOWED_ATTRIBUTES
-    styles = settings.RICHTEXT_ALLOWED_STYLES
-    return clean(html, tags=tags, attributes=attrs, strip=True,
-                 strip_comments=False, styles=styles)
+    if settings.PAGEDOWN_USE_MEZZANINE_HTML_ESCAPE:
+        return escape(html)
+    else:
+        tags = settings.RICHTEXT_ALLOWED_TAGS
+        attrs = settings.RICHTEXT_ALLOWED_ATTRIBUTES
+        styles = settings.RICHTEXT_ALLOWED_STYLES
+        return clean(html, tags=tags, attributes=attrs, strip=True,
+                     strip_comments=False, styles=styles)
 
 
 def codehilite(content):
