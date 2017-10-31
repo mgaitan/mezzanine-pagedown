@@ -1,6 +1,8 @@
 from mezzanine.conf import settings
 from mezzanine.utils.html import escape
 from markdown import markdown
+from distutils.version import LooseVersion
+import bleach
 from bleach import clean
 
 
@@ -11,8 +13,11 @@ def _clean(html):
         tags = settings.RICHTEXT_ALLOWED_TAGS
         attrs = settings.RICHTEXT_ALLOWED_ATTRIBUTES
         styles = settings.RICHTEXT_ALLOWED_STYLES
-        return clean(html, tags=tags, attributes=attrs, strip=True,
-                     strip_comments=False, styles=styles)
+        if LooseVersion('2.0') <= LooseVersion(bleach.__version__) and isinstance(attrs, tuple):
+            attrs = list(attrs)
+
+    return clean(html, tags=tags, attributes=attrs, strip=True,
+                 strip_comments=False, styles=styles)
 
 
 def codehilite(content):
