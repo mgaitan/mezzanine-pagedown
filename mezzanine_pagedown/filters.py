@@ -17,7 +17,7 @@ def _clean(html):
         attrs = list(attrs)
 
     return clean(html, tags=tags, attributes=attrs, strip=True,
-                strip_comments=False, styles=styles)
+                 strip_comments=False, styles=styles)
 
 
 def codehilite(content):
