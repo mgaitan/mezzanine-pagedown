@@ -24,7 +24,7 @@ def codehilite(content):
     """
     Renders content using markdown with the codehilite extension.
     """
-    return _clean(markdown(content, ['codehilite',]))
+    return _clean(markdown(content, ['codehilite',]), output_format=settings.PAGEDOWN_MARKDOWN_FORMAT)
 
 
 def plain(content):
@@ -38,7 +38,7 @@ def extra(content):
     """
     Renders content using markdown extra.
     """
-    return _clean(markdown(content, ['extra',]))
+    return _clean(markdown(content, ['extra',], output_format=settings.PAGEDOWN_MARKDOWN_FORMAT))
 
 
 def custom(content):
@@ -47,4 +47,4 @@ def custom(content):
     ``settings.PAGEDOWN_MARKDOWN_EXTENSIONS``.
     """
     return _clean(markdown(content,
-            extensions=settings.PAGEDOWN_MARKDOWN_EXTENSIONS))
+            extensions=settings.PAGEDOWN_MARKDOWN_EXTENSIONS,output_format=settings.PAGEDOWN_MARKDOWN_FORMAT))

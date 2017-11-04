@@ -34,3 +34,10 @@ register_setting(
     editable=False,
     default=False,
 )
+
+register_setting(
+    name="PAGEDOWN_MARKDOWN_FORMAT",
+    description="python-markdown's output format. ",
+    editable=False,
+    default="xhtml1",
+)
