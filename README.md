@@ -82,7 +82,12 @@ How to Use
     Markdown to HTML, and respects Mezzanine's
     `RICHTEXT_ALLOWED_TAGS`, `RICHTEXT_ALLOWED_ATTRIBUTES`, and
     `RICHTEXT_ALLOWED_STYLES` settings.
-
+    
+    * NOTES:   
+    If you want to embed gist's code etc. in the iframe in the markdown text,  
+    please set `PAGEDOWN_USE_MEZZANINE_HTML_ESCAPE` to `True`.
+    mezzanine-pagedown provides Mezzanine's sanitizing after rendering Markdown to HTML
+    
  6. (Optional): Server-side previews:
 
      - In `settings.py`, enable server-side live previews in the editor:
